@@ -12,7 +12,7 @@ import {
 const appId = import.meta.env.VITE_ZK_PASS_APP_ID;
 const schemaId = import.meta.env.VITE_ZK_PASS_SCHEMA_ID;
 
-const TRANSGATE_INSTALL_LINK =
+export const TRANSGATE_INSTALL_LINK =
   "https://chromewebstore.google.com/detail/zkpass-transgate/afkoofjocpbclhnldmmaphappihehpma";
 
 /**
