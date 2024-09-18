@@ -1,0 +1,46 @@
+{
+    "issuer": "Warpcast",
+    "desc": "Verify Warpcast account details including username, follower count, and bio information.",
+    "website": "https://www.warpcast.com/",
+    "APIs": [
+        {
+            "host": "client.warpcast.com",
+            "intercept": {
+                "url": "v2/onboarding-state",
+                "method": "GET"
+            },
+            "assert": [
+                {
+                    "key": "result|state|user|username",
+                    "value": "",
+                    "operation": "!="
+                },
+                {
+                    "key": "result|state|user|fid",
+                    "value": "0",
+                    "operation": ">"
+                },
+                {
+                    "key": "result|state|user|followerCount",
+                    "value": "0",
+                    "operation": ">="
+                },
+                {
+                    "key": "result|state|hasCompletedRegistration",
+                    "value": "true",
+                    "operation": "="
+                }
+            ],
+            "nullifier": "result|state|user|fid"
+        }
+    ],
+    "HRCondition": [
+        "Farcaster Account Owner",
+        "Has Farcaster ID (FID)",
+        "Has at least 0 followers",
+        "Has completed registration"
+    ],
+    "tips": {
+        "message": "Please ensure you're logged into your Farcaster account before starting the verification process."
+    }
+}
